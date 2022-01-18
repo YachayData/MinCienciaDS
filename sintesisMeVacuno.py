@@ -86,7 +86,8 @@ x = np.arange(30) + 1
 xv, yv = np.meshgrid(x, x)
 
 
-plt.figure(figsize=(8, 8))
+fig, ax = plt.subplots(figsize=(8, 8))
+
 
 plt.scatter(xv, yv, s=80, color=my_pink, label="sin pauta completa")
 
@@ -105,6 +106,9 @@ while index < val3:
         plt.scatter(xvr[index], yvr[index], s=80, color=my_green)
     index += 1
 
+    if index == val3:
+        print(yvr[index], 'altura verde')
+
 index2 = 0
 while index2 < val2:
     if index2 == 0:
@@ -115,6 +119,9 @@ while index2 < val2:
         plt.scatter(xvr[index], yvr[index], s=80, color=my_blue)
     index2 += 1
     index += 1
+
+    if index2 == val2:
+        print(yvr[index], 'altura azul')
 
 
 x_uci = np.arange(3) + 5
@@ -131,6 +138,7 @@ xvr = xv.ravel()
 yvr = yv.ravel()
 
 while index < val3:
+    #plt.scatter(xvr[index], yvr[index], s=80, color=my_green)
     plt.scatter(xvr[index], yvr[index], s=80, color=my_green)
     index += 1
 
@@ -144,6 +152,14 @@ plt.text(3.75, 33.5, "Ingresos UCI")
 plt.text(2, 32.5,"(promedio 5 semanas)")
 
 plt.legend(loc="upper right", bbox_to_anchor=(.97, .97))
+
+#ax.set(xticklabels=[])  # remove the tick labels
+#ax.tick_params(left=False)  # remove the ticks
+
+#val = 0.25
+#plt.text(-0.75, 1-val, '1')
+#plt.text(-0.75, 10-val, '10')
+#plt.text(-0.75, 20-val, '20')
+#plt.text(-0.75, 30-val, '30')
 plt.axis("off")
-plt.savefig("sintesis.pdf")
 plt.show(block=False)
