@@ -32,7 +32,7 @@ dfl = df.iloc[-1, :]
 # Esquema completo:
 dose3 = dfl.personas_con_refuerzo
 dose2 = dfl.personas_con_pauta_completa
-dose0 = obj - dose3 - dose2
+dose0 = obj - dose2
 
 
 # Calcular esto en base 900.
@@ -140,9 +140,10 @@ while index2 < val2:
     index2 += 1
     index += 1
 
-plt.text(3, 33, "Estimación UCI")
+plt.text(3.75, 33.5, "Ingresos UCI")
+plt.text(2, 32.5,"(promedio 5 semanas)")
 
-plt.legend(loc="upper right", bbox_to_anchor=(1.0, 1))
+plt.legend(loc="upper right", bbox_to_anchor=(.97, .97))
 plt.axis("off")
 plt.savefig("sintesis.pdf")
 plt.show(block=False)
