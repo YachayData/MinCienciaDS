@@ -22,6 +22,14 @@ my_df = df[
     ]
 ]
 
+my_df_fall = df[
+    [
+      'sin_vac_fall', 'una_dosis_fall', 'dos_dosis_fall',
+       'dos_dosis_comp_fall', 'dosis_unica_fall', 'dosis_unica_comp_fall',
+       'dosis_ref_comp_fall'
+    ]
+]
+
 # Población objetivo
 obj = 3044845 + 15200840
 
@@ -63,16 +71,40 @@ dose2_uci = res.dosis_unica_comp_uci + res.dos_dosis_comp_uci
 dose3_uci = res.dosis_ref_comp_uci
 dose0_uci = sum_uci - dose3_uci - dose2_uci
 
-dose3_uci_p = dose3_uci / sum_uci * 9
-dose2_uci_p = dose2_uci / sum_uci * 9
-dose0_uci_p = dose0_uci / sum_uci * 9
+dose3_uci_p = dose3_uci / sum_uci * 30
+dose2_uci_p = dose2_uci / sum_uci * 30
+dose0_uci_p = dose0_uci / sum_uci * 30
 
-print("Para 9 personas en UCI:")
+print("Para 30 personas en UCI:")
 print(dose3_uci_p, "personas con resfuerzo")
 print(dose2_uci_p, "con pauta completa")
 print(dose0_uci_p, "sin pauta completa")
 print("---")
 
+
+# Fallecidos en las 5 últimas semanas
+
+res_fall = my_df_fall.iloc[-5:, :].sum()
+
+sum_fall = res.sum()
+print(sum_fall, "suma de los cassos fallecidos últimas 5 semanas")
+
+print(res)
+print("----")
+
+dose2_fall = res_fall.dosis_unica_comp_fall + res_fall.dos_dosis_comp_fall
+dose3_fall = res_fall.dosis_ref_comp_fall
+dose0_fall = sum_fall - dose3_fall - dose2_fall
+
+dose3_fall_p = dose3_fall / sum_fall * 30
+dose2_fall_p = dose2_fall / sum_fall * 30
+dose0_fall_p = dose0_fall / sum_fall * 30
+
+print("Para 30 personas fallecidas:")
+print(dose3_fall_p, "personas con resfuerzo")
+print(dose2_fall_p, "con pauta completa")
+print(dose0_fall_p, "sin pauta completa")
+print("---")
 
 # Generar el plot:
 
@@ -124,42 +156,38 @@ while index2 < val2:
         print(yvr[index], 'altura azul')
 
 
-x_uci = np.arange(3) + 5
-y_uci = np.arange(3) + 35
-xv, yv = np.meshgrid(x_uci, y_uci)
+y_uci = np.arange(30) + 1
+plt.scatter( -2 * np.ones(y_uci.shape[0]), y_uci, s=80, color=my_pink)
 
-plt.scatter(xv, yv, s=80, color=my_pink)
+val3_uci = np.round(dose3_uci_p)
+val2_uci = np.round(dose2_uci_p)
 
-val3 = np.round(dose3_uci_p)
-val2 = np.round(dose2_uci_p)
+range3_uci = np.arange(val3_uci) + 1
+range2_uci = np.arange(val2_uci) + 1 + val3_uci
 
-index = 0
-xvr = xv.ravel()
-yvr = yv.ravel()
+plt.scatter( -2 * np.ones(range3_uci.shape[0]), range3_uci, s=80, color=my_green)
+plt.scatter( -2 * np.ones(range2_uci.shape[0]), range2_uci, s=80, color=my_blue)
 
-while index < val3:
-    #plt.scatter(xvr[index], yvr[index], s=80, color=my_green)
-    plt.scatter(xvr[index], yvr[index], s=80, color=my_green)
-    index += 1
 
-index2 = 0
-while index2 < val2:
-    plt.scatter(xvr[index], yvr[index], s=80, color=my_blue)
-    index2 += 1
-    index += 1
+y_fall = np.arange(30) + 1
+plt.scatter( 33 * np.ones(y_fall.shape[0]), y_fall, s=80, color=my_pink)
 
-plt.text(3.75, 33.5, "Ingresos UCI")
-plt.text(2, 32.5,"(promedio 5 semanas)")
+val3_fall = np.round(dose3_fall_p)
+val2_fall = np.round(dose2_fall_p)
 
-plt.legend(loc="upper right", bbox_to_anchor=(.97, .97))
+range3_fall = np.arange(val3_fall) + 1
+range2_fall = np.arange(val2_fall) + 1 + val3_fall
 
-#ax.set(xticklabels=[])  # remove the tick labels
-#ax.tick_params(left=False)  # remove the ticks
+plt.scatter( 33 * np.ones(range3_fall.shape[0]), range3_fall, s=80, color=my_green)
+plt.scatter( 33 * np.ones(range2_fall.shape[0]), range2_fall, s=80, color=my_blue)
 
-#val = 0.25
-#plt.text(-0.75, 1-val, '1')
-#plt.text(-0.75, 10-val, '10')
-#plt.text(-0.75, 20-val, '20')
-#plt.text(-0.75, 30-val, '30')
+
+plt.legend(loc="upper center", bbox_to_anchor = (.5, 1.125))
+
+plt.text( -2, 31, 'uci', ha='center', va='center')
+plt.text( 33, 31, 'fallecidos', ha='center', va='center')
 plt.axis("off")
+
+plt.savefig('sintesis.pdf')
+
 plt.show(block=False)
