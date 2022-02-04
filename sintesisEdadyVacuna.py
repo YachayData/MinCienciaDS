@@ -96,15 +96,15 @@ g = sns.heatmap(data = vals_confirmados, cmap = 'RdYlGn', annot = True, square =
 print('1')
 
 ax2.set_title('casos uci')
-g = sns.heatmap(data = np.ones(vals_uci.shape), cmap = 'Blues', annot = pivot_uci_str, square = True, ax = ax2, cbar = None, fmt = '', mask = ~mask_uci, color = 'g')
+#g = sns.heatmap(data = np.ones(vals_uci.shape), cmap = 'Blues', annot = pivot_uci_str, square = True, ax = ax2, cbar = None, fmt = '', mask = ~mask_uci, color = 'g')
 g = sns.heatmap(data = vals_uci , cmap = 'RdYlGn', annot = pivot_uci_str, square = True, ax = ax2, cbar = None, fmt = '', mask = mask_uci)
 
 print('2')
 ax2.set_title('fallecimientos')
-g = sns.heatmap(data = np.ones(vals_def.shape), cmap='Blues', annot = pivot_def_str, square = True, ax = ax3, cbar = None, fmt = '', mask = ~mask_def, color = 'g')
+#g = sns.heatmap(data = np.ones(vals_def.shape), cmap='Blues', annot = pivot_def_str, square = True, ax = ax3, cbar = None, fmt = '', mask = ~mask_def, color = 'g')
 g = sns.heatmap(data = vals_def , cmap = 'RdYlGn', annot = pivot_def_str, square = True, ax = ax3, fmt= '', cbar = None, mask = mask_def)
 
 plt.show(block=False)
 
 
-plt.savefig('sintesisEdad.pdf')
+plt.savefig('sintesisEdad2.pdf')
