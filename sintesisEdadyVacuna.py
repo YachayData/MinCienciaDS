@@ -107,4 +107,4 @@ g = sns.heatmap(data = vals_def , cmap = 'RdYlGn', annot = pivot_def_str, square
 plt.show(block=False)
 
 
-plt.savefig('sintesisEdad2.pdf')
+plt.savefig('sintesisEdad.pdf', bbox_inches='tight')
