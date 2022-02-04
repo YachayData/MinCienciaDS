@@ -87,9 +87,9 @@ print("---")
 res_fall = my_df_fall.iloc[-5:, :].sum()
 
 sum_fall = res.sum()
-print(sum_fall, "suma de los cassos fallecidos últimas 5 semanas")
+print("suma de los casos fallecidos últimas 5 semanas: ", sum_fall)
 
-print(res)
+print(res_fall)
 print("----")
 
 dose2_fall = res_fall.dosis_unica_comp_fall + res_fall.dos_dosis_comp_fall
