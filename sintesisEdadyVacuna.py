@@ -38,10 +38,15 @@ cols = ['sin esquema completo',
  'con esquema completo',
  'con dosis refuerzo > 14 dias']
 
+index = ['80 años o más', '71 - 80 años', '61 - 70 años',
+       '51 - 60 años', '41 - 50 años', '31 - 40 años', '21 - 30 años',
+       '12 - 20 años', 'Total']
+
 pivot_poblacion = df12.pivot_table(values = "poblacion", columns = "estado_vacunacion", index = "grupo_edad")[cols]
 pivot_confirmados = df12.pivot_table(values = "p_casos_confirmados", columns = "estado_vacunacion", index = "grupo_edad")[cols]
 pivot_uci = df12.pivot_table(values = "p_casos_uci", columns = "estado_vacunacion", index = "grupo_edad")[cols]
 pivot_def = df12.pivot_table(values = "p_casos_def", columns = "estado_vacunacion", index = "grupo_edad")[cols]
+
 
 pivot_poblacion_old = pivot_poblacion.values
 pivot_confirmados_old = pivot_confirmados.values
