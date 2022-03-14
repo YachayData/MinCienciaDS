@@ -26,7 +26,7 @@ for real_time in real_time_list:
 
 	route = WazeRouteCalculator.WazeRouteCalculator(from_address, to_address, region)
 	res = route.calc_route_info(real_time=real_time)
-	results.append([ta, cities[0], cities[-1], res[0], res[1]])
+	results.append([ta, cities[0], cities[-1], res[0], res[1], real_time])
 
 	from_address = cities[-1] + ' Centro, Chile'
 	to_address = cities[0] + ' Centro, Chile'
