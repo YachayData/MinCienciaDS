@@ -27,7 +27,7 @@ jobs:
         run: |
           pwd
           cd waze
-          python3 waze.py
+          python3 wazeHuinanco.py
       - name: Commit data files
         run: |
           pwd
