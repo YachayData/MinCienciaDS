@@ -1,0 +1,5 @@
+Fecha,From,To,Tiempo (min),Distancia (km),Real Time,Velocidad promedia
+Fri May 27 04:03:48 2022,Tomeco,Copiulemu,17.016666666666666,23.39,True,82.4720861900098
+Fri May 27 04:03:48 2022,Copiulemu,Tomeco,16.1,21.461,True,79.97888198757762
+Fri May 27 04:03:48 2022,Tomeco,Copiulemu,17.533333333333335,23.39,False,80.04182509505702
+Fri May 27 04:03:48 2022,Copiulemu,Tomeco,16.1,21.461,False,79.97888198757762
