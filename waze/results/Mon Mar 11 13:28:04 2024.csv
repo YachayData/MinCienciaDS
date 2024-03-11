@@ -1,0 +1,5 @@
+Fecha,From,To,Tiempo (min),Distancia (km),Real Time,Velocidad promedia
+Mon Mar 11 13:28:04 2024,Tomeco,Copiulemu,17.4,23.48,True,80.96551724137932
+Mon Mar 11 13:28:04 2024,Copiulemu,Tomeco,14.8,22.002,True,89.1972972972973
+Mon Mar 11 13:28:04 2024,Tomeco,Copiulemu,16.95,23.48,False,83.11504424778762
+Mon Mar 11 13:28:04 2024,Copiulemu,Tomeco,14.8,22.002,False,89.1972972972973
